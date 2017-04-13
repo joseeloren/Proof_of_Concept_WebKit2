@@ -1,0 +1,1 @@
+g++ main.cpp `/home/jlorenzo/wxWidgets/gtk-build/wx-config --cxxflags --libs` -o proof
