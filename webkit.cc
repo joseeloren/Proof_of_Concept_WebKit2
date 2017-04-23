@@ -48,16 +48,16 @@ web_view_get_link_url (WebKitWebView *web_view)
 {
     gchar *script;
 
-    script = g_strdup_printf("window.document.getElementByIdd('%s').innerHTML;","web-content-rendering");
+    script = g_strdup_printf("window.document.getElementByIdd('%s').value","test");
 
 
     JSStringRef s = JSStringCreateWithUTF8CString("window.document.getElementById('web-content-rendering').innerHTML;");
     JSGlobalContextRef c = webkit_web_view_get_javascript_global_context(web_view);
     JSValueRef ex;//const OpaqueJSValue** ex = NULL;
-    JSValueRef val = JSEvaluateScript(c, s,0,0,0,(const OpaqueJSValue**)ex);
+    //JSValueRef val = JSEvaluateScript(c, s,0,0,0,(const OpaqueJSValue**)ex);
     //printf("%s\n",ex);
-    if (val == NULL)
-      printf("ok\n");
+    //if (val == NULL)
+    //printf("ok\n");
     bool b = JSCheckScriptSyntax(c, s,0,0,0);
     printf("%d\n",(b)?1:0);
     
@@ -100,7 +100,7 @@ int main(int argc, char* argv[])
     g_signal_connect(webView, "close", G_CALLBACK(closeWebViewCb), main_window);
 
     // Load a web page into the browser instance
-    webkit_web_view_load_uri(webView, "http://www.webkitgtk.org/");
+    webkit_web_view_load_uri(webView, "http://192.168.1.34");
 
     // Make sure that when the browser area becomes visible, it will get mouse
     // and keyboard events
