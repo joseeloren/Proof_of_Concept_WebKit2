@@ -48,7 +48,7 @@ web_view_get_link_url (WebKitWebView *web_view)
 {
     gchar *script;
 
-    script = g_strdup_printf("window.document.getElementByIdd('%s').value","test");
+    script = g_strdup_printf("window.document.getElementById('%s').value","test");
 
 
     JSStringRef s = JSStringCreateWithUTF8CString("window.document.getElementById('web-content-rendering').innerHTML;");
